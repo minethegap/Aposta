@@ -22,8 +22,9 @@ int main()
     ptr = head;                                 /* setting store pointer position */
 
     ptr->next = NULL;
-    int select;
-
+    int select, cnt = 0;
+	int engAvg, mathAvg;
+	int engSum, mathSum;
     do
     {
         printf("(1)New (2)Exit =>");
@@ -46,12 +47,21 @@ int main()
     ptr = head;                                         // set access pointer from head 
         while (ptr->next != NULL)
         {
-            printf("Name: %s\t No: %s\tMath: %d\tEng: %d\n", 
-                                                ptr->name, ptr->studentId, ptr->math, ptr->eng);
+            printf("\nName: %s\t No: %s\tMath: %d\tEng: %d\n", ptr->name, ptr->studentId, 
+															ptr->math, ptr->eng);
+			cnt++;
+			engSum = engSum + ptr->eng;
+			mathSum = mathSum + ptr->math;
             head = head->next;                          // move head to next 
             ptr = head; 
         }
+		
+		engAvg = engSum / cnt;
+		mathAvg = mathSum / cnt;
 
+		printf("-----------------------------------------------\n");
+		printf("This LinkedList  Score of student English Score: %d\tMath Score: %d\n", 
+																engAvg, mathAvg);
     return 0;
 }
 
